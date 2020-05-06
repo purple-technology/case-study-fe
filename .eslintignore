@@ -1,0 +1,7 @@
+node_modules
+coverage
+.webpack
+dist
+
+package-lock.json
+*/**/locales/**/*.json
