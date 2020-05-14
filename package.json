@@ -37,7 +37,6 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.7.5",
-		"@purple/sls-axiory-config": "^11.3.4",
 		"@types/axios": "^0.14.0",
 		"@types/exenv": "^1.2.0",
 		"@types/next": "^9.0.0",
