@@ -15,5 +15,5 @@ npm run dev
 ## .env template
 
 ```
-API_URL=<URL to GraphQL endpoint>
+API_URL=<URL to GraphQL endpoint. Note, include also /graphq path>
 ```
