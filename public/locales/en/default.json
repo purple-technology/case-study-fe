@@ -2,11 +2,13 @@
 	"main": {
 		"title": "Phoenix page",
 		"h1": "todos",
-		"inputPlaceholder": "What needs to be done?",
+		"inputPlaceholder": "What has to be done?",
 		"footer": {
 			"itemsLeft": "{{ count }} items left",
 			"all": "All",
+			"active": "Active",
 			"completed": "Completed"
+			
 		}
 	}
 }
