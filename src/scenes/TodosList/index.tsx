@@ -66,9 +66,9 @@ const TodosList = () => {
 			} else if (forFilter === FilterEnum.COMPLETED) {
 				return todo.checked
 			} else if (forFilter === FilterEnum.ALL) {
-				return false
+				return todo
 			}
-		})
+		});
 
 	return (
 		<Section>
@@ -100,15 +100,16 @@ const TodosList = () => {
 										onChange={(e) => {
 											if (e.currentTarget.checked !== checked) {
 												switchCheck({
-													variables: { id: todos[0].id },
+													variables: { id },
 													refetchQueries: ['Todos']
 												})
 											}
 										}}
 									/>
-									<ToggleLabel className={clsx({ checked })}>
+								<ToggleLabel className={clsx({ checked })}>
 										<small>
 											{new Date(createdTimestamp).toLocaleDateString('en-US')}
+											&nbsp;
 											{new Date(createdTimestamp).toLocaleTimeString('en-US')}
 											&nbsp;-&nbsp;
 										</small>
@@ -132,11 +133,18 @@ const TodosList = () => {
 			<Footer>
 				<TodoCount>
 					{t('main.footer.itemsLeft', {
-						count: getTodosByFilter(FilterEnum.ALL).length
+						count: getTodosByFilter(FilterEnum.ACTIVE).length
 					})}
 				</TodoCount>
 				<FilterWrapper>
 					<Filter>
+						<FilterLink
+							className={filter === FilterEnum.ALL ? 'selected' : ''}
+							onClick={() => setFilter(FilterEnum.ALL)}
+							href="#/"
+						>
+							{t('main.footer.all')}
+						</FilterLink>
 						<FilterLink
 							className={filter === FilterEnum.ACTIVE ? 'selected' : ''}
 							onClick={() => setFilter(FilterEnum.ACTIVE)}
@@ -151,13 +159,7 @@ const TodosList = () => {
 						>
 							{t('main.footer.completed')}
 						</FilterLink>
-						<FilterLink
-							className={filter === FilterEnum.ALL ? 'selected' : ''}
-							onClick={() => setFilter(FilterEnum.ALL)}
-							href="#/"
-						>
-							{t('main.footer.all')}
-						</FilterLink>
+					
 					</Filter>
 				</FilterWrapper>
 			</Footer>
