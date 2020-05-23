@@ -105,6 +105,7 @@ const TodosList = () => {
 												})
 											}
 										}}
+										className="checkbox"
 									/>
 									<ToggleLabel className={clsx({ checked })}>
 										<small>

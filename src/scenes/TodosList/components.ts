@@ -113,6 +113,10 @@ export const Todo = styled.li`
 	&:hover {
 		.destroy {
 			display: block;
+			cursor: pointer;
+		}
+		.checkbox {
+			cursor: pointer;
 		}
 	}
 `
