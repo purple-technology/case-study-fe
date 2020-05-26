@@ -66,7 +66,7 @@ const TodosList = () => {
 			} else if (forFilter === FilterEnum.COMPLETED) {
 				return todo.checked
 			} else if (forFilter === FilterEnum.ALL) {
-				return false
+				return todo /* return ALL todo-items not false */
 			}
 		})
 
@@ -132,7 +132,7 @@ const TodosList = () => {
 			<Footer>
 				<TodoCount>
 					{t('main.footer.itemsLeft', {
-						count: getTodosByFilter(FilterEnum.ALL).length
+						count: getTodosByFilter(FilterEnum.ACTIVE).length /* wrong Enum, changed to ACTIVE instaed of ALL */
 					})}
 				</TodoCount>
 				<FilterWrapper>
@@ -142,7 +142,7 @@ const TodosList = () => {
 							onClick={() => setFilter(FilterEnum.ACTIVE)}
 							href="#/"
 						>
-							{t('main.footer.active')}
+							{t('main.footer.active')/* active was not declared at /public/locales/en/default.json */ }
 						</FilterLink>
 						<FilterLink
 							className={filter === FilterEnum.COMPLETED ? 'selected' : ''}
