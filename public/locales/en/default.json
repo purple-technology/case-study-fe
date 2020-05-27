@@ -1,7 +1,7 @@
 {
 	"main": {
 		"title": "Phoenix page",
-		"h1": "Petr_Vanco_todos",
+		"h1": "todos",
 		"inputPlaceholder": "What needs to be done?",
 		"footer": {
 			"itemsLeft": "{{ count }} items left",
