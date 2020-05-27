@@ -1,0 +1,15 @@
+front-end 
+
+
+active was not defined in locales variables of english and bad order of buttons. 
+
+Active button was not filterring all items, I still dont know if 
+return !todo.checked ||  todo.checked is correct. I believe that other solution could be nicer.?  
+
+Counter was counting only Active -> calling function with bad arguments 
+
+I added space between date and time because of better reading 
+
+Check of todos was set to first todo everytime 
+
+On starting page was not set All todos should be picked  
