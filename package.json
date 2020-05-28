@@ -11,7 +11,8 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "eslint . --ext .ts,.js,.jsx,.json",
-		"lint:fix": "eslint . --ext .ts,.js,.jsx,.json --fix"
+		"lint:fix": "eslint . --ext .ts,.js,.jsx,.json --fix",
+		"commit": "git-cz"
 	},
 	"dependencies": {
 		"@apollo/react-hooks": "^3.1.2",
@@ -47,6 +48,7 @@
 		"@typescript-eslint/parser": "^2.31.0",
 		"babel-plugin-styled-components": "^1.10.0",
 		"babel-register": "^6.26.0",
+		"cz-conventional-changelog": "^3.2.0",
 		"env-cmd": "^9.0.3",
 		"eslint": "^6.8.0",
 		"eslint-config-airbnb-base": "^14.1.0",
@@ -56,10 +58,25 @@
 		"eslint-plugin-react": "^7.19.0",
 		"eslint-plugin-simple-import-sort": "^5.0.1",
 		"esm": "^3.2.25",
+		"husky": "^4.2.5",
+		"lint-staged": "^10.2.6",
 		"nodemon": "^2.0.2",
 		"prettier": "^2.0.5",
 		"react-dom": "^16.8.6",
 		"serve": "^11.0.2",
 		"typescript": "^3.7.3"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{ts,js,jsx,json}": "npm run lint:fix"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-conventional-changelog"
+		}
 	}
 }

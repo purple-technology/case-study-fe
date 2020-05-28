@@ -66,7 +66,7 @@ const TodosList = () => {
 			} else if (forFilter === FilterEnum.COMPLETED) {
 				return todo.checked
 			} else if (forFilter === FilterEnum.ALL) {
-				return false
+				return todo
 			}
 		})
 
@@ -132,11 +132,18 @@ const TodosList = () => {
 			<Footer>
 				<TodoCount>
 					{t('main.footer.itemsLeft', {
-						count: getTodosByFilter(FilterEnum.ALL).length
+						count: getTodosByFilter(filter).length
 					})}
 				</TodoCount>
 				<FilterWrapper>
 					<Filter>
+						<FilterLink
+							className={filter === FilterEnum.ALL ? 'selected' : ''}
+							onClick={() => setFilter(FilterEnum.ALL)}
+							href="#/"
+						>
+							{t('main.footer.all')}
+						</FilterLink>
 						<FilterLink
 							className={filter === FilterEnum.ACTIVE ? 'selected' : ''}
 							onClick={() => setFilter(FilterEnum.ACTIVE)}
@@ -150,13 +157,6 @@ const TodosList = () => {
 							href="#/"
 						>
 							{t('main.footer.completed')}
-						</FilterLink>
-						<FilterLink
-							className={filter === FilterEnum.ALL ? 'selected' : ''}
-							onClick={() => setFilter(FilterEnum.ALL)}
-							href="#/"
-						>
-							{t('main.footer.all')}
 						</FilterLink>
 					</Filter>
 				</FilterWrapper>
