@@ -10,8 +10,8 @@
 		"dev": "npm run env -- next -p 3002",
 		"build": "next build",
 		"start": "next start",
-		"lint": "eslint . --ext .ts,.js,.jsx,.json",
-		"lint:fix": "eslint . --ext .ts,.js,.jsx,.json --fix",
+		"lint": "eslint . --ext .ts,.js,.jsx,.json,.tsx",
+		"lint:fix": "eslint . --ext .ts,.js,.jsx,.json,.tsx --fix",
 		"commit": "git-cz"
 	},
 	"dependencies": {
