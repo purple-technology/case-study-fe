@@ -6,7 +6,8 @@
 		"footer": {
 			"itemsLeft": "{{ count }} items left",
 			"all": "All",
-			"completed": "Completed"
+			"completed": "Completed",
+            "active": "Active"
 		}
 	}
 }
