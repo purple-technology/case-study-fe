@@ -66,7 +66,7 @@ const TodosList = () => {
 			} else if (forFilter === FilterEnum.COMPLETED) {
 				return todo.checked
 			} else if (forFilter === FilterEnum.ALL) {
-				return false
+				return true
 			}
 		})
 
@@ -141,9 +141,9 @@ const TodosList = () => {
 							className={filter === FilterEnum.ALL ? 'selected' : ''}
 							onClick={() => setFilter(FilterEnum.ALL)}
 							href="#/"
-    >
+						>
 							{t('main.footer.all')}
-                        </FilterLink>
+						</FilterLink>
 						<FilterLink
 							className={filter === FilterEnum.ACTIVE ? 'selected' : ''}
 							onClick={() => setFilter(FilterEnum.ACTIVE)}
