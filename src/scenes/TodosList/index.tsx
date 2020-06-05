@@ -100,7 +100,7 @@ const TodosList = () => {
 										onChange={(e) => {
 											if (e.currentTarget.checked !== checked) {
 												switchCheck({
-													variables: { id: todos[0].id },
+													variables: { id: id }, 
 													refetchQueries: ['Todos']
 												})
 											}
