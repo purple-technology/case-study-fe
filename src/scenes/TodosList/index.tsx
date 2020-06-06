@@ -43,18 +43,16 @@ enum FilterEnum {
 
 const TodosList = () => {
 	const { t } = useTranslation()
-
 	const [filter, setFilter] = useState(FilterEnum.ACTIVE)
 	const { loading, data = { todos: [] } } = useQuery<{ todos: Todo[] }>(
 		GET_TODOS
 	)
-
 	const todos: Todo[] = loading
 		? []
-		: data.todos.sort(({ createdTimestamp: a }, { createdTimestamp: b }) =>
-				a > b ? -1 : 1
-		  )
-
+		: data.todos.sort(({ createdTimestamp: a }, { createdTimestamp: b }) => 
+				a < b ? 1 : -1	
+		  )  
+		  
 	const [addTodo] = useMutation(ADD_TODO)
 	const [switchCheck] = useMutation(SWITCH_CHECK)
 	const [removeTodo] = useMutation(REMOVE_TODO)
@@ -100,7 +98,7 @@ const TodosList = () => {
 										onChange={(e) => {
 											if (e.currentTarget.checked !== checked) {
 												switchCheck({
-													variables: { id: id }, 
+													variables: { id }, 
 													refetchQueries: ['Todos']
 												})
 											}
@@ -108,8 +106,9 @@ const TodosList = () => {
 									/>
 									<ToggleLabel className={clsx({ checked })}>
 										<small>
-											{new Date(createdTimestamp).toLocaleDateString('en-US')}
-											{new Date(createdTimestamp).toLocaleTimeString('en-US')}
+											{new Date(createdTimestamp).toLocaleDateString('Cz-cz')}
+											&nbsp;
+											{new Date(createdTimestamp).toLocaleTimeString('Cz-cz')}
 											&nbsp;-&nbsp;
 										</small>
 										{text}
