@@ -50,9 +50,9 @@ const TodosList = () => {
 	const todos: Todo[] = loading
 		? []
 		: data.todos.sort(({ createdTimestamp: a }, { createdTimestamp: b }) => 
-				a < b ? 1 : -1	
+				a > b  ? -1	: 1
 		  )  
-		  
+
 	const [addTodo] = useMutation(ADD_TODO)
 	const [switchCheck] = useMutation(SWITCH_CHECK)
 	const [removeTodo] = useMutation(REMOVE_TODO)
