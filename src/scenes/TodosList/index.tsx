@@ -44,7 +44,7 @@ enum FilterEnum {
 const TodosList = () => {
 	const { t } = useTranslation()
 
-	const [filter, setFilter] = useState(FilterEnum.ACTIVE)
+	const [filter, setFilter] = useState(FilterEnum.ACTIVE)	// default status after page is loaded
 	const { loading, data = { todos: [] } } = useQuery<{ todos: Todo[] }>(
 		GET_TODOS
 	)
