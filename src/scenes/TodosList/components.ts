@@ -49,6 +49,15 @@ export const NewTodoInput = styled.input`
 	}
 `
 
+export const PrioritySelector = styled.select`
+	text-align: center;
+	border: none;
+	opacity: 0;
+	position: absolute;
+
+	background: none;
+`
+
 export const BatchCheckbox = styled.input`
 	text-align: center;
 	border: none;

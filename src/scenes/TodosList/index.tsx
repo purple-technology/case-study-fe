@@ -18,7 +18,8 @@ import {
 	TodoCount,
 	TodoList,
 	Toggle,
-	ToggleLabel
+	ToggleLabel,
+	PrioritySelector
 } from './components'
 import { WithApolloProvider } from './components/WithApolloProvider'
 import {
@@ -33,6 +34,7 @@ export interface Todo {
 	text: string
 	createdTimestamp: string
 	checked: boolean
+	priority: string
 }
 
 enum FilterEnum {
@@ -44,18 +46,37 @@ enum FilterEnum {
 const TodosList = () => {
 	const { t } = useTranslation()
 	const [filter, setFilter] = useState(FilterEnum.ACTIVE)
+	//
+	const [priority, setPriority] = useState<string>('')
+	//
 	const { loading, data = { todos: [] } } = useQuery<{ todos: Todo[] }>(
 		GET_TODOS
 	)
 	const todos: Todo[] = loading
 		? []
 		: data.todos.sort(({ createdTimestamp: a }, { createdTimestamp: b }) => 
-				a > b  ? -1	: 1
+				a > b ? -1	: 1
 		  )  
 
 	const [addTodo] = useMutation(ADD_TODO)
 	const [switchCheck] = useMutation(SWITCH_CHECK)
 	const [removeTodo] = useMutation(REMOVE_TODO)
+
+	const handlePriority = e => {
+		const priority = e.curentTarget.value;
+		if(e.keyCode == 13){
+			addTodo({ variables: { priority }, refetchQueries: ['Todos'] })
+			e.currentTarget.value = ''
+		}
+	}
+
+	const handleNewTodo = e => {
+		const text = e.currentTarget.value.trim()
+		if (e.key === 'Enter' && text.length > 0) {
+			addTodo({ variables: { text }, refetchQueries: ['Todos'] })
+			e.currentTarget.value = '';
+		}
+	}
 
 	const getTodosByFilter = (forFilter: FilterEnum) =>
 		todos.filter((todo) => {
@@ -75,14 +96,20 @@ const TodosList = () => {
 				<NewTodoInput
 					disabled={loading}
 					placeholder={t('main.inputPlaceholder')}
-					onKeyUp={(e) => {
-						const text = e.currentTarget.value.trim()
-						if (e.key === 'Enter' && text.length > 0) {
-							addTodo({ variables: { text }, refetchQueries: ['Todos'] })
-							e.currentTarget.value = ''
-						}
-					}}
+
+
+					onKeyUp={handleNewTodo}
 				/>
+				<PrioritySelector 
+					disabled={loading}
+					
+					onKeyUp={handlePriority}
+				>
+
+					<option value='0'>Regular</option>
+					<option value='1'>Important</option>
+					<option value='2'>High Priority</option>
+				 </PrioritySelector>
 			</header>
 			<MainSection>
 				<BatchCheckbox id="batchcheckbox" type="checkbox" />
