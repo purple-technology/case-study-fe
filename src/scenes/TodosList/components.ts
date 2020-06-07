@@ -23,7 +23,7 @@ export const H1 = styled.h1`
 export const NewTodoInput = styled.input`
 	position: relative;
 	margin: 0;
-	width: 100%;
+	width: 80%;
 	font-size: 24px;
 	font-family: inherit;
 	font-weight: inherit;
@@ -50,12 +50,12 @@ export const NewTodoInput = styled.input`
 `
 
 export const PrioritySelector = styled.select`
-	text-align: center;
+	position: relative;
+	width: 20%;
+	height: 4rem;
+	float:right;
 	border: none;
-	opacity: 0;
-	position: absolute;
-
-	background: none;
+	outline: none;
 `
 
 export const BatchCheckbox = styled.input`

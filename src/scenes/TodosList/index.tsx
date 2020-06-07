@@ -43,11 +43,21 @@ enum FilterEnum {
 	COMPLETED
 }
 
+enum PriorityEnum {
+	LOW,
+	MEDIUM,
+	HIGH
+  }
+
+
+
+
+
 const TodosList = () => {
 	const { t } = useTranslation()
 	const [filter, setFilter] = useState(FilterEnum.ACTIVE)
 	//
-	const [priority, setPriority] = useState<string>('')
+	const [usePriority, setPriority] = useState(PriorityEnum.LOW)
 	//
 	const { loading, data = { todos: [] } } = useQuery<{ todos: Todo[] }>(
 		GET_TODOS
@@ -61,19 +71,14 @@ const TodosList = () => {
 	const [addTodo] = useMutation(ADD_TODO)
 	const [switchCheck] = useMutation(SWITCH_CHECK)
 	const [removeTodo] = useMutation(REMOVE_TODO)
-
-	const handlePriority = e => {
-		const priority = e.curentTarget.value;
-		if(e.keyCode == 13){
-			addTodo({ variables: { priority }, refetchQueries: ['Todos'] })
-			e.currentTarget.value = ''
-		}
-	}
-
-	const handleNewTodo = e => {
+	
+	const handleNewTodo = (e) => {
 		const text = e.currentTarget.value.trim()
+		const priority = PriorityEnum[usePriority];
+		console.log("Хендлер туду", PriorityEnum[priority])
+		console.log('--------')
 		if (e.key === 'Enter' && text.length > 0) {
-			addTodo({ variables: { text }, refetchQueries: ['Todos'] })
+			addTodo({ variables: { text, priority }, refetchQueries: ['Todos'] })
 			e.currentTarget.value = '';
 		}
 	}
@@ -96,19 +101,29 @@ const TodosList = () => {
 				<NewTodoInput
 					disabled={loading}
 					placeholder={t('main.inputPlaceholder')}
-
-
 					onKeyUp={handleNewTodo}
 				/>
 				<PrioritySelector 
 					disabled={loading}
-					
-					onKeyUp={handlePriority}
+					///onChange={handlePriority}
+					onChange={(e) => {
+						if(e.target.value == "LOW"){
+							setPriority(PriorityEnum.LOW)
+							console.log("Priority handler", usePriority)
+						} else if (e.target.value == "MEDIUM"){
+							setPriority(PriorityEnum.MEDIUM)
+							console.log("Priority handler", usePriority)
+						} else if (e.target.value == "HIGH") {
+							setPriority(PriorityEnum.HIGH)
+							console.log("Priority handler", usePriority)
+						}
+						}}
 				>
+					<option value='LOW'>Regular</option>
 
-					<option value='0'>Regular</option>
-					<option value='1'>Important</option>
-					<option value='2'>High Priority</option>
+					<option value='MEDIUM'>Important</option>
+
+					<option value='HIGH' >High Priority</option>
 				 </PrioritySelector>
 			</header>
 			<MainSection>

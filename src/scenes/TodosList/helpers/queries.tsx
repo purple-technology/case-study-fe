@@ -7,13 +7,14 @@ export const GET_TODOS = gql`
 			text
 			createdTimestamp
 			checked
+			priority
 		}
 	}
 `
 
 export const ADD_TODO = gql`
-	mutation($text: String!) {
-		addTodo(text: $text) {
+	mutation($text: String!, $priority: String!) {
+		addTodo(text: $text, priority: $priority) {
 			status
 		}
 	}
