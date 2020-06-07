@@ -46,19 +46,14 @@ enum FilterEnum {
 enum PriorityEnum {
 	LOW,
 	MEDIUM,
-	HIGH
+	HIGH,
+	PURPLE
   }
-
-
-
-
 
 const TodosList = () => {
 	const { t } = useTranslation()
 	const [filter, setFilter] = useState(FilterEnum.ACTIVE)
-	//
 	const [usePriority, setPriority] = useState(PriorityEnum.LOW)
-	//
 	const { loading, data = { todos: [] } } = useQuery<{ todos: Todo[] }>(
 		GET_TODOS
 	)
@@ -75,8 +70,6 @@ const TodosList = () => {
 	const handleNewTodo = (e) => {
 		const text = e.currentTarget.value.trim()
 		const priority = PriorityEnum[usePriority];
-		console.log("Хендлер туду", PriorityEnum[priority])
-		console.log('--------')
 		if (e.key === 'Enter' && text.length > 0) {
 			addTodo({ variables: { text, priority }, refetchQueries: ['Todos'] })
 			e.currentTarget.value = '';
@@ -105,25 +98,22 @@ const TodosList = () => {
 				/>
 				<PrioritySelector 
 					disabled={loading}
-					///onChange={handlePriority}
 					onChange={(e) => {
 						if(e.target.value == "LOW"){
 							setPriority(PriorityEnum.LOW)
-							console.log("Priority handler", usePriority)
 						} else if (e.target.value == "MEDIUM"){
 							setPriority(PriorityEnum.MEDIUM)
-							console.log("Priority handler", usePriority)
 						} else if (e.target.value == "HIGH") {
 							setPriority(PriorityEnum.HIGH)
-							console.log("Priority handler", usePriority)
+						} else if (e.target.value == "PURPLE") {
+							setPriority(PriorityEnum.PURPLE)
 						}
 						}}
 				>
-					<option value='LOW'>Regular</option>
-
-					<option value='MEDIUM'>Important</option>
-
-					<option value='HIGH' >High Priority</option>
+					<option value='LOW'>{t('main.priorities.low')}</option>
+					<option value='MEDIUM'>{t('main.priorities.medium')}</option>
+					<option value='HIGH' >{t('main.priorities.high')}</option>
+					<option value='PURPLE' >{t('main.priorities.purple')}</option>
 				 </PrioritySelector>
 			</header>
 			<MainSection>
@@ -131,7 +121,7 @@ const TodosList = () => {
 				<BatchCheckboxLabel />
 				<TodoList>
 					{getTodosByFilter(filter).map(
-						({ id, checked, createdTimestamp, text }, i) => (
+						({ id, checked, createdTimestamp, text, priority }, i) => (
 							<Todo key={i}>
 								<div>
 									<Toggle
@@ -154,7 +144,17 @@ const TodosList = () => {
 											&nbsp;-&nbsp;
 										</small>
 										{text}
+
+										<div className={
+										priority == "LOW" ? 'markerLow': 
+										priority == "MEDIUM" ? 'markerMedium' :
+										priority == "HIGH" ? 'markerHigh' : 
+										priority == "PURPLE" ? 'markerPurple' : 'markerLow'}/>
 									</ToggleLabel>
+
+									
+									</div>
+
 									<button
 										onClick={() =>
 											removeTodo({
@@ -164,7 +164,7 @@ const TodosList = () => {
 										}
 										className="destroy"
 									/>
-								</div>
+									
 							</Todo>
 						)
 					)}

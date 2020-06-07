@@ -8,6 +8,12 @@
 			"active":"Uncompleted",
 			"all": "All",
 			"completed": "Completed"
+		},
+		"priorities": {
+			"low": "low priority",
+			"medium": "medium priority",
+			"high": "high priority",
+			"purple": "purple!"
 		}
 	}
 }

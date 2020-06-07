@@ -52,10 +52,13 @@ export const NewTodoInput = styled.input`
 export const PrioritySelector = styled.select`
 	position: relative;
 	width: 20%;
-	height: 4rem;
+	height: 4.1rem;
 	float:right;
-	border: none;
-	outline: none;
+	border: 1px solid #222222;
+	background-color:#222222;
+	color:#fff;
+	text-transform: uppercase;
+	font-size: smaller;
 `
 
 export const BatchCheckbox = styled.input`
@@ -145,7 +148,7 @@ export const Toggle = styled.input`
 
 export const ToggleLabel = styled.label`
 	word-break: break-all;
-	padding: 15px 60px 15px 60px;
+	padding: 15px 110px 15px 60px;
 	display: block;
 	line-height: 1.2;
 	transition: color 0.4s;
