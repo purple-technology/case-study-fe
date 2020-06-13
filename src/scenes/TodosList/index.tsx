@@ -2,6 +2,7 @@ import { useMutation, useQuery } from '@apollo/react-hooks'
 import clsx from 'clsx'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import Moment from 'moment'
 
 import {
 	BatchCheckbox,
@@ -109,6 +110,7 @@ const TodosList = () => {
 									<ToggleLabel className={clsx({ checked })}>
 										<small>
 											{new Date(createdTimestamp).toLocaleDateString('en-US')}
+											&nbsp;-&nbsp;
 											{new Date(createdTimestamp).toLocaleTimeString('en-US')}
 											&nbsp;-&nbsp;
 										</small>
