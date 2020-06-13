@@ -2,7 +2,6 @@ import { useMutation, useQuery } from '@apollo/react-hooks'
 import clsx from 'clsx'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import Moment from 'moment'
 
 import {
 	BatchCheckbox,
