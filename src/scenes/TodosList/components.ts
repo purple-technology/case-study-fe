@@ -155,9 +155,9 @@ export const Footer = styled.div`
 	display: block;
 	color: #777;
 	padding: 10px 15px;
-	height: 20px;
 	text-align: center;
 	border-top: 1px solid #e6e6e6;
+	line-height: 2em;
 `
 
 export const TodoCount = styled.span`
@@ -175,7 +175,6 @@ export const FilterWrapper = styled.ul`
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	position: absolute;
 	right: 0;
 	left: 0;
 `
