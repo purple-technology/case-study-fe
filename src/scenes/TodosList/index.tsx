@@ -61,13 +61,17 @@ const TodosList = () => {
 
 	const getTodosByFilter = (forFilter: FilterEnum) =>
 		todos.filter((todo) => {
-			if (forFilter === FilterEnum.ACTIVE) {
-				return !todo.checked
-			} else if (forFilter === FilterEnum.COMPLETED) {
-				return todo.checked
-			} else if (forFilter === FilterEnum.ALL) {
-				return false
+			switch(forFilter){
+				case FilterEnum.ACTIVE:
+					return !todo.checked
+				case FilterEnum.COMPLETED:
+					return todo.checked
+				case FilterEnum.ALL:
+					return true;
+				default:
+					console.warn(`Getting todos by filter: uspecified filter for ${forFilter}`)
 			}
+			return true;
 		})
 
 	return (
