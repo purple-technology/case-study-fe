@@ -105,6 +105,7 @@ export const Todo = styled.li`
 		font-size: 30px;
 		color: #cc9a9a;
 		transition: color 0.2s ease-out;
+		cursor: pointer;
 
 		&:after {
 			content: '×';
@@ -129,6 +130,7 @@ export const Toggle = styled.input`
 	border: none;
 	-webkit-appearance: none;
 	appearance: none;
+	cursor: pointer;
 
 	height: 40px;
 	background: none;
