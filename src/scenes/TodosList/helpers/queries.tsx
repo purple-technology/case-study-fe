@@ -34,3 +34,11 @@ export const SWITCH_CHECK = gql`
 		}
 	}
 `
+
+export const COMPLETE_ALL = gql`
+	mutation {
+		completeAll {
+			status
+		}
+	}
+`

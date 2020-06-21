@@ -67,6 +67,7 @@ export const BatchCheckboxLabel = styled.label`
 	left: -13px;
 	-webkit-transform: rotate(90deg);
 	transform: rotate(90deg);
+	cursor: pointer;
 
 	&:before {
 		content: '❯';

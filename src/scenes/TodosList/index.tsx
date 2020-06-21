@@ -25,7 +25,8 @@ import {
 	ADD_TODO,
 	GET_TODOS,
 	REMOVE_TODO,
-	SWITCH_CHECK
+	SWITCH_CHECK,
+	COMPLETE_ALL
 } from './helpers/queries'
 
 export interface Todo {
@@ -57,6 +58,7 @@ const TodosList = () => {
 
 	const [addTodo] = useMutation(ADD_TODO)
 	const [switchCheck] = useMutation(SWITCH_CHECK)
+	const [completeAll] = useMutation(COMPLETE_ALL)
 	const [removeTodo] = useMutation(REMOVE_TODO)
 
 	const getTodosByFilter = (forFilter: FilterEnum) =>
@@ -92,7 +94,10 @@ const TodosList = () => {
 			</header>
 			<MainSection>
 				<BatchCheckbox id="batchcheckbox" type="checkbox" />
-				<BatchCheckboxLabel />
+				<BatchCheckboxLabel onClick={()=>{
+						completeAll({ refetchQueries: ['Todos'] })
+					}}
+				/>
 				<TodoList>
 					{getTodosByFilter(filter).map(
 						({ id, checked, createdTimestamp, text }, i) => (
