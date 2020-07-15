@@ -100,7 +100,7 @@ const TodosList = () => {
 										onChange={(e) => {
 											if (e.currentTarget.checked !== checked) {
 												switchCheck({
-													variables: { id: todos[0].id },
+													variables: { id },
 													refetchQueries: ['Todos']
 												})
 											}
@@ -109,6 +109,7 @@ const TodosList = () => {
 									<ToggleLabel className={clsx({ checked })}>
 										<small>
 											{new Date(createdTimestamp).toLocaleDateString('en-US')}
+											&nbsp; {/* added white space */}
 											{new Date(createdTimestamp).toLocaleTimeString('en-US')}
 											&nbsp;-&nbsp;
 										</small>
