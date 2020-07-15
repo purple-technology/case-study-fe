@@ -35,7 +35,7 @@ export interface Todo {
 	checked: boolean
 }
 
-enum FilterEnum {
+export enum FilterEnum /* export maybe not needed ? */ {
 	ALL,
 	ACTIVE,
 	COMPLETED
@@ -66,7 +66,7 @@ const TodosList = () => {
 			} else if (forFilter === FilterEnum.COMPLETED) {
 				return todo.checked
 			} else if (forFilter === FilterEnum.ALL) {
-				return false
+				return true
 			}
 		})
 
@@ -133,7 +133,7 @@ const TodosList = () => {
 			<Footer>
 				<TodoCount>
 					{t('main.footer.itemsLeft', {
-						count: getTodosByFilter(FilterEnum.ALL).length
+						count: getTodosByFilter(FilterEnum.ACTIVE).length
 					})}
 				</TodoCount>
 				<FilterWrapper>
