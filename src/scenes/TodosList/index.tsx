@@ -132,7 +132,7 @@ const TodosList = () => {
 			<Footer>
 				<TodoCount>
 					{t('main.footer.itemsLeft', {
-						count: getTodosByFilter(FilterEnum.ALL).length
+						count: getTodosByFilter(FilterEnum.ACTIVE).length
 					})}
 				</TodoCount>
 				<FilterWrapper>
@@ -149,7 +149,7 @@ const TodosList = () => {
 							onClick={() => setFilter(FilterEnum.ACTIVE)}
 							href="#/"
 						>
-							{t('Active')}
+							{t('main.footer.active')}
 						</FilterLink>
 						<FilterLink
 							className={filter === FilterEnum.COMPLETED ? 'selected' : ''}
