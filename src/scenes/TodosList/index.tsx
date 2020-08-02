@@ -44,7 +44,7 @@ enum FilterEnum {
 const TodosList = () => {
 	const { t } = useTranslation()
 
-	const [filter, setFilter] = useState(FilterEnum.ACTIVE)
+	const [filter, setFilter] = useState(FilterEnum.ALL)
 	const { loading, data = { todos: [] } } = useQuery<{ todos: Todo[] }>(
 		GET_TODOS
 	)
@@ -109,6 +109,7 @@ const TodosList = () => {
 									<ToggleLabel className={clsx({ checked })}>
 										<small>
 											{new Date(createdTimestamp).toLocaleDateString('en-US')}
+											&nbsp;-&nbsp;
 											{new Date(createdTimestamp).toLocaleTimeString('en-US')}
 											&nbsp;-&nbsp;
 										</small>
