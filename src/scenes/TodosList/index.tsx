@@ -108,8 +108,9 @@ const TodosList = () => {
 									/>
 									<ToggleLabel className={clsx({ checked })}>
 										<small>
-											{new Date(createdTimestamp).toLocaleDateString('en-US')}
-											{new Date(createdTimestamp).toLocaleTimeString('en-US')}
+											{new Date(createdTimestamp).toLocaleDateString('cs-CZ')}
+											&nbsp;
+											{new Date(createdTimestamp).toLocaleTimeString('cs-CZ')}
 											&nbsp;-&nbsp;
 										</small>
 										{text}
