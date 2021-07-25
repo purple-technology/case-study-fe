@@ -113,6 +113,7 @@ export const Todo = styled.li`
 	&:hover {
 		.destroy {
 			display: block;
+			cursor: pointer;
 		}
 	}
 `
@@ -132,6 +133,10 @@ export const Toggle = styled.input`
 	height: 40px;
 	background: none;
 	opacity: 0;
+
+	&:hover {
+		cursor: pointer;
+	}
 `
 
 export const ToggleLabel = styled.label`
