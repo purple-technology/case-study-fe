@@ -5,6 +5,7 @@
 		"inputPlaceholder": "What needs to be done?",
 		"footer": {
 			"itemsLeft": "{{ count }} items left",
+			"active": "Active",
 			"all": "All",
 			"completed": "Completed"
 		}
