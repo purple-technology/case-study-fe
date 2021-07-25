@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from '@apollo/react-hooks'
 import clsx from 'clsx'
+import { groupBy } from 'lodash/'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -51,11 +52,22 @@ const TodosList = () => {
 		GET_TODOS
 	)
 
-	const todos: Todo[] = loading
-		? []
-		: data.todos.sort(({ createdTimestamp: a }, { createdTimestamp: b }) =>
-				a > b ? -1 : 1
-		  )
+	const getSortedAndGroupedTodos = () => {
+		const sortedTodos = data.todos.sort(
+			({ createdTimestamp: a }, { createdTimestamp: b }) => (a > b ? -1 : 1)
+		)
+		const groupedTodos = groupBy(sortedTodos, 'checked')
+
+		if (groupedTodos?.true && groupedTodos?.false) {
+			return [...groupedTodos.false, ...groupedTodos.true]
+		} else if (groupedTodos?.true) {
+			return groupedTodos.true
+		} else {
+			return groupedTodos.false
+		}
+	}
+
+	const todos: Todo[] = loading ? [] : getSortedAndGroupedTodos()
 
 	const [addTodo] = useMutation(ADD_TODO)
 	const [switchCheck] = useMutation(SWITCH_CHECK)
