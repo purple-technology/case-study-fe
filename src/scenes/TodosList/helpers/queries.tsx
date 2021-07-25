@@ -27,6 +27,14 @@ export const REMOVE_TODO = gql`
 	}
 `
 
+export const CLEAR_COMPLETED = gql`
+	mutation {
+		clearCompleted {
+			status
+		}
+	}
+`
+
 export const SWITCH_CHECK = gql`
 	mutation($id: ID!) {
 		switchCheck(id: $id) {

@@ -7,7 +7,8 @@
 			"itemsLeft": "{{ count }} items left",
 			"active": "Active",
 			"all": "All",
-			"completed": "Completed"
+			"completed": "Completed",
+			"clearCompleted": "Clear completed"
 		}
 	}
 }

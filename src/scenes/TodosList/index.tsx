@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import {
 	BatchCheckbox,
 	BatchCheckboxLabel,
+	ClearCompleted,
 	Filter,
 	FilterLink,
 	FilterWrapper,
@@ -23,6 +24,7 @@ import {
 import { WithApolloProvider } from './components/WithApolloProvider'
 import {
 	ADD_TODO,
+	CLEAR_COMPLETED,
 	GET_TODOS,
 	REMOVE_TODO,
 	SWITCH_CHECK
@@ -58,6 +60,7 @@ const TodosList = () => {
 	const [addTodo] = useMutation(ADD_TODO)
 	const [switchCheck] = useMutation(SWITCH_CHECK)
 	const [removeTodo] = useMutation(REMOVE_TODO)
+	const [clearCompleted] = useMutation(CLEAR_COMPLETED)
 
 	const getTodosByFilter = (forFilter: FilterEnum) =>
 		todos.filter((todo) => {
@@ -161,6 +164,15 @@ const TodosList = () => {
 						</FilterLink>
 					</Filter>
 				</FilterWrapper>
+				<ClearCompleted
+					onClick={() =>
+						clearCompleted({
+							refetchQueries: ['Todos']
+						})
+					}
+				>
+					{t('main.footer.clearCompleted')}
+				</ClearCompleted>
 			</Footer>
 		</Section>
 	)
