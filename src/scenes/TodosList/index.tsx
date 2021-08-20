@@ -139,6 +139,13 @@ const TodosList = () => {
 				<FilterWrapper>
 					<Filter>
 						<FilterLink
+							className={filter === FilterEnum.ALL ? 'selected' : ''}
+							onClick={() => setFilter(FilterEnum.ALL)}
+							href="#/"
+						>
+							{t('main.footer.all')}
+						</FilterLink>
+						<FilterLink
 							className={filter === FilterEnum.ACTIVE ? 'selected' : ''}
 							onClick={() => setFilter(FilterEnum.ACTIVE)}
 							href="#/"
@@ -151,13 +158,6 @@ const TodosList = () => {
 							href="#/"
 						>
 							{t('main.footer.completed')}
-						</FilterLink>
-						<FilterLink
-							className={filter === FilterEnum.ALL ? 'selected' : ''}
-							onClick={() => setFilter(FilterEnum.ALL)}
-							href="#/"
-						>
-							{t('main.footer.all')}
 						</FilterLink>
 					</Filter>
 				</FilterWrapper>
