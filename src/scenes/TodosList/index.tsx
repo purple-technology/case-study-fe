@@ -91,8 +91,8 @@ const TodosList = () => {
 				<BatchCheckboxLabel />
 				<TodoList>
 					{getTodosByFilter(filter).map(
-						({ id, checked, createdTimestamp, text }, i) => (
-							<Todo key={i}>
+						({ id, checked, createdTimestamp, text }) => (
+							<Todo key={id}>
 								<div>
 									<Toggle
 										type="checkbox"
