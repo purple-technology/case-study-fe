@@ -108,6 +108,10 @@ export const Todo = styled.li`
 		&:after {
 			content: '×';
 		}
+
+		&:hover {			
+			color: #D42929;
+		}
 	}
 
 	&:hover {
@@ -132,6 +136,9 @@ export const Toggle = styled.input`
 	height: 40px;
 	background: none;
 	opacity: 0;
+	&:hover {
+		cursor: pointer;
+	}
 `
 
 export const ToggleLabel = styled.label`

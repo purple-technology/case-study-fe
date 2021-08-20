@@ -32,5 +32,8 @@ export const GlobalStyle = createGlobalStyle`
     appearance: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    &:hover {
+      cursor: pointer;
+    }
 	}
 `
